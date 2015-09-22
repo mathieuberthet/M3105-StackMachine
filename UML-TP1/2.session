@@ -1,0 +1,8 @@
+window_sizes 1200 896 300 900 682 82
+show_stereotypes
+selected 
+package_ref 129 // UML-TP1
+open
+  classview_ref 128002 // TP-Machine
+end
+end

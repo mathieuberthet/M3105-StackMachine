@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class CPU
 {
-	public int number;
+
 	public final static int HALT 	= 0x00;
 	public final static int PUSH  	= 0x01;
 	public final static int ADD 	= 0x02;
