@@ -1,8 +1,18 @@
 window_sizes 1200 896 300 900 682 82
+diagrams
+  active  classdiagram_ref 128002 // TP-Machine
+    894 740 100 4 0 0
+end
 show_stereotypes
-selected 
-package_ref 129 // UML-TP1
+selected attribute_ref 137986 // is
 open
-  classview_ref 128002 // TP-Machine
+  class_ref 128002 // CPU
+  class_ref 134530 // IO
+  class_ref 134658 // Machine
+  class_ref 134786 // MachineLauncher
+  class_ref 134914 // Memory
+  class_ref 135042 // Program
+  class_ref 135170 // Stack
+  class_ref 135298 // Instruction
 end
 end
