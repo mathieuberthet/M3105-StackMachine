@@ -1,6 +1,6 @@
 format 76
 "TP" // TP
-  revision 2
+  revision 3
   modified_by 2 ""
   // class settings
   //class diagram settings
@@ -314,7 +314,7 @@ ${members}}
 	    classrelation_ref 128386 // <composition>
       end
 
-      classrelation 128642 // appartient (<composition>)
+      classrelation 128642 // <composition>
 	relation_ref 128258 // <composition>
       end
 
@@ -438,6 +438,18 @@ ${members}}
       classrelation 129410 // <aggregation>
 	relation_ref 128642 // <aggregation>
       end
+
+      classrelation 137602 // <association>
+	relation 136066 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137602 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137730 // <association>
+      end
     end
 
     class 134658 "Machine"
@@ -468,7 +480,7 @@ ${members}}
 	  b role_name "appartient" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128642 // appartient (<composition>)
+	    classrelation_ref 128642 // <composition>
       end
 
       operation 128770 "Machine"
@@ -540,6 +552,18 @@ ${members}}
 
       classrelation 130434 // <aggregation>
 	relation_ref 129154 // <aggregation>
+      end
+
+      classrelation 138114 // <association>
+	relation 136322 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138114 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138242 // <association>
       end
     end
 
@@ -637,6 +661,10 @@ ${members}}
 "
 	    classrelation_ref 130690 // <aggregation>
       end
+
+      classrelation 138242 // <association>
+	relation_ref 136322 // <association>
+      end
     end
 
     class 134914 "Memory"
@@ -674,6 +702,29 @@ ${members}}
 	
       end
 
+      attribute 144514 "hexadebut"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 144642 "hexafin"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 137474 // <association>
+	relation_ref 135938 // <association>
+      end
     end
 
     class 135042 "Program"
@@ -701,6 +752,14 @@ ${members}}
 	
 	
 	
+      end
+
+      classrelation 137218 // possede (<generalisation>)
+	relation 135810 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 137218 // possede (<generalisation>)
+	  b parent class_ref 135298 // Instruction
       end
     end
 
@@ -730,6 +789,32 @@ ${members}}
 	
 	
       end
+
+      attribute 144770 "lenght"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 137730 // <association>
+	relation_ref 136066 // <association>
+      end
+
+      classrelation 137858 // <association>
+	relation 136194 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137858 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137986 // <association>
+      end
     end
 
     class 135298 "Instruction"
@@ -757,7 +842,7 @@ ${members}}
 	
       end
 
-      attribute 137858 "call"
+      attribute 137858 "instruction"
 	private explicit_type "int"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -767,7 +852,7 @@ ${members}}
 	idl_decl ""
       end
 
-      attribute 137986 "is"
+      attribute 137986 "param"
 	private explicit_type "int[]"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -775,6 +860,22 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 137346 // est_stocke_dans (<association>)
+	relation 135938 ----
+	  a role_name "est_stocke_dans" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137346 // est_stocke_dans (<association>)
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137474 // <association>
+      end
+
+      classrelation 137986 // <association>
+	relation_ref 136194 // <association>
       end
     end
   end
