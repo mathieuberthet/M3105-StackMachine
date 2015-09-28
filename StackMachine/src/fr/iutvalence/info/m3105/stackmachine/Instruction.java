@@ -12,12 +12,12 @@ public class Instruction
 		this.param = param;
 	}
 	
-	public int getcall()
+	public int getinstruction()
 	{
 		return this.instruction;
 	}
 	
-	public int[] getis()
+	public int[] getparam()
 	{
 		return this.param;
 	}
