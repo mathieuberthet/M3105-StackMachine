@@ -21,5 +21,15 @@ public class Memory {
 		return this.hexafin;
 	}
 
+	public int getStartAddress() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void write(int currentAddress, int instructionParam) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

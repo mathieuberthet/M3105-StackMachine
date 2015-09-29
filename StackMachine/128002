@@ -1,7 +1,7 @@
 format 76
 "TP" // TP
-  revision 3
-  modified_by 2 ""
+  revision 4
+  modified_by 2 "mathieu26"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -333,6 +333,83 @@ ${members}}
 	
 	
       end
+
+      operation 136962 "wireToProgramMemory"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "programMemory" explicit_type "Memory"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137090 "wireToExpStack"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "expStack" explicit_type "Stack"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137218 "wireToCallStack"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "CallStack" explicit_type "Stack"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137346 "wireToIoSubsystem"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "ioSystem" explicit_type "IO"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137730 "clearStacks"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137858 "setPC"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "address" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 134530 "IO"
@@ -438,6 +515,54 @@ ${members}}
       classrelation 129410 // <aggregation>
 	relation_ref 128642 // <aggregation>
       end
+
+      classrelation 137602 // <association>
+	relation 136066 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137602 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137730 // <association>
+      end
+
+      operation 136578 "getIn"
+	public explicit_return_type "bufferedReader"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 136706 "getOut"
+	public explicit_return_type "Printstream"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 136834 "getErr"
+	public explicit_return_type "PrintStream"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 134658 "Machine"
@@ -541,6 +666,18 @@ ${members}}
       classrelation 130434 // <aggregation>
 	relation_ref 129154 // <aggregation>
       end
+
+      classrelation 138114 // <association>
+	relation 136322 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138114 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138242 // <association>
+      end
     end
 
     class 134786 "MachineLauncher"
@@ -637,6 +774,10 @@ ${members}}
 "
 	    classrelation_ref 130690 // <aggregation>
       end
+
+      classrelation 138242 // <association>
+	relation_ref 136322 // <association>
+      end
     end
 
     class 134914 "Memory"
@@ -693,6 +834,60 @@ ${members}}
 	python_decl ""
 	idl_decl ""
       end
+
+      classrelation 137474 // <association>
+	relation_ref 135938 // <association>
+      end
+
+      operation 137474 "getStartAddress"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137986 "write"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "currentAddress" explicit_type "int"
+	  param in name "instructionParam" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138370 "gethexadebut"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138498 "gethexafin"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 135042 "Program"
@@ -728,6 +923,31 @@ ${members}}
 	    java "${type}"
 	    classrelation_ref 137218 // <generalisation>
 	  b parent class_ref 135298 // Instruction
+      end
+
+      operation 137602 "getInstructionCount"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138242 "getInstructionAt"
+	public explicit_return_type "Instruction"
+	nparams 1
+	  param in name "Instructionnumber" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
@@ -766,6 +986,34 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 137730 // <association>
+	relation_ref 136066 // <association>
+      end
+
+      classrelation 137858 // <association>
+	relation 136194 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137858 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137986 // <association>
+      end
+
+      operation 138626 "getlength"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
@@ -812,6 +1060,58 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 137346 // est_stocke_dans (<association>)
+	relation 135938 ----
+	  a role_name "est_stocke_dans" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137346 // est_stocke_dans (<association>)
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 137474 // <association>
+      end
+
+      classrelation 137986 // <association>
+	relation_ref 136194 // <association>
+      end
+
+      operation 136322 "getInstruction"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 136450 "getParam"
+	public explicit_return_type "int[]"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138114 "getOpCode"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
   end

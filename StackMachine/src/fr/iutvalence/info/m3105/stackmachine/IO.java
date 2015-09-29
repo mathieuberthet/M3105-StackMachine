@@ -47,4 +47,19 @@ public class IO
 		this.out.println("> "+op);
 		
 	}
+	
+	public BufferedReader getIn() 
+	{
+		return in;
+	}
+
+	public PrintStream getOut() 
+	{
+		return out;
+	}
+
+	public PrintStream getErr() 
+	{
+		return err;
+	}
 }

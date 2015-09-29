@@ -25,7 +25,7 @@ public class Machine
 			Instruction instruction = program.getInstructionAt(instructionNumber);
 			this.programMemory.write(currentAddress, instruction.getOpCode());
 			currentAddress++;
-			int[] instructionParams = instruction.getParams();
+			int[] instructionParams = instruction.getparam();
 			if (instructionParams != null)
 			{
 				for (int instructionParam : instructionParams)
