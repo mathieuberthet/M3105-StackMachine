@@ -14,12 +14,14 @@ public class Program {
 		return this.instruction;
 	}
 
-	public int getInstructionCount() {
+	public int getInstructionCount() 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Instruction getInstructionAt(int instructionNumber) {
+	public Instruction getInstructionAt(int instructionNumber) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

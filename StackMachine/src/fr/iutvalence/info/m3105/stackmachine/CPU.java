@@ -28,7 +28,10 @@ public class CPU
 	public final static int DUP		= 0x14;
 	public final static int POP		= 0x15;
 	private int opCode;
-	private IO io;
+	private IO ioSystem;
+	private Stack expStack;
+	private Memory programMemory;
+	private Stack callStack;
 	
 	// TODO something is missing here...
 
@@ -36,7 +39,7 @@ public class CPU
 	{
 		
 	}
-	public void run()
+	public void run(int address, int value)
 	{
 		try
 		{
@@ -45,117 +48,107 @@ public class CPU
 				// TODO something is missing here...
 
 				// System.err.print("@" + this.programCounter + ": ");
+				// int i = this.programMemory.getAt(this)
 				switch (opCode)
 				{
 					case HALT:
 					{
 						// System.err.println("HALT");
-						this.io.displayProgramTermination();
+						this.ioSystem.displayProgramTermination();
 						return;
 					}
 					case PUSH:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case ADD:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case SUB:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case MUL:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case DIV:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case MOD:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case NEG:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case LT:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case LE:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case GT:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case GE:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case EQ:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case NE:
 					{
-						// TODO something is missing here...
 						break;
 					}
 					case IN:
 					{
-						// TODO something is missing here...
+						int i = this.ioSystem.read();
+						this.expStack.push(i);
+						
 						break;
 					}
 					case OUT:
 					{
-						// TODO something is missing here...
+						this.io.out();
 						break;
 					}
 					case CALL:
 					{
-						// TODO something is missing here...
+						this.io.call(address);
 						break;
 					}
 					case RET:
 					{
-						// TODO something is missing here...
+						this.io.ret();
 						break;
 					}
 					case JP:
 					{
-						// TODO something is missing here...
+						this.io.jp(address);
 						break;
 					}
 					case JZ:
 					{
-						// TODO something is missing here...
+						this.io.jz(address);
 						break;
 					}
 					case DUP:
 					{
-						// TODO something is missing here...
+						this.io.dup();
 						break;
 					}
 					case POP:
 					{
-						// TODO something is missing here...
+						this.io.pop();
 						break;
 					}
 					default:
@@ -184,32 +177,34 @@ public class CPU
 		}		
 	}
 
-	public void wireToProgramMemory(Memory programMemory) {
+	public void wireToProgramMemory(Memory programMemory) 
+	{
+		this.programMemory = programMemory;
+	}
+
+	public void wireToExpStack(Stack expStack) 
+	{
+		this.expStack = expStack;
+	}
+
+	public void wireToCallStack(Stack callStack) 
+	{
+		this.callStack = callStack;
+	}
+
+	public void wireToIoSubsystem(IO ioSystem) 
+	{
+		this.ioSystem = ioSystem;
+	}
+
+	public void clearStacks() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void wireToExpStack(Stack expStack) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void wireToCallStack(Stack callStack) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void wireToIoSubsystem(IO ioSystem) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void clearStacks() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setPC(int address) {
+	public void setPC(int address) 
+	{
 		// TODO Auto-generated method stub
 		
 	}

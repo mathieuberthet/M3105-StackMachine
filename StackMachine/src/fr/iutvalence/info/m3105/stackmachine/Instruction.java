@@ -22,7 +22,8 @@ public class Instruction
 		return this.param;
 	}
 
-	public int getOpCode() {
+	public int getOpCode() 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
