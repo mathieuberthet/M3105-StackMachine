@@ -2,12 +2,14 @@ package fr.iutvalence.info.m3105.stackmachine;
 
 public class Stack {
 
-	// TODO Mettre ici la pile
+	private  Stack Stack;
 	private int length;
 	
-	public Stack(int i) 
+	public Stack(int size) throws InvalidParametersException
 	{
-		this.length = i;
+		if (size < 0)
+			throw new InvalidParametersException();
+		this.Stack = new Stack(size);
 	}
 	
 	public int getlength()
@@ -21,5 +23,10 @@ public class Stack {
 
 	public int pop() throws StackUnderflowException {
 		return 0;
+	}
+	
+	public void clear()
+	{
+		this.Stack.clear();
 	}
 }

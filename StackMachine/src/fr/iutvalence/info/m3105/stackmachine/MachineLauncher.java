@@ -5,7 +5,7 @@ import java.security.InvalidParameterException;
 public class MachineLauncher
 {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws InvalidParametersException
 	{
 		/*
 		0x0: 		in	  		// read a value value from IO and push it to exp-stack
@@ -78,6 +78,6 @@ public class MachineLauncher
 			System.err.println("Program loading failure: program does not fit memory");
 			System.exit(1);
 		}
-		machine.executeProgram(0x00000000, 0);
+		machine.executeProgram(0x00000000);
 	}
 }

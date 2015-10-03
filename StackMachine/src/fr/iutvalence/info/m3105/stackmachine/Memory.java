@@ -4,11 +4,13 @@ public class Memory {
 
 	private int hexadebut;
 	private int hexafin;
-	
-	public Memory(int i, int j) 
+
+	public Memory(int hexadebut, int hexafin) throws InvalidParametersException
 	{
-		this.hexadebut = i;
-		this.hexafin = j;
+		if (hexadebut < 0 || hexafin < 0 || hexadebut<hexafin)
+			throw new InvalidParametersException();
+		this.hexadebut = hexadebut;
+		this.hexafin = hexafin;
 	}
 	
 	public int gethexadebut()

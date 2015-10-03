@@ -32,6 +32,7 @@ public class CPU
 	private Stack expStack;
 	private Memory programMemory;
 	private Stack callStack;
+	private int PC;
 	
 	// TODO something is missing here...
 
@@ -39,13 +40,14 @@ public class CPU
 	{
 		
 	}
-	public void run(int address, int value)
+	public void run()
 	{
 		try
 		{
+			int opCode;
 			while (true)
 			{
-				// TODO something is missing here...
+				opCode = this.programMemory.get(this.PC);
 
 				// System.err.print("@" + this.programCounter + ": ");
 				// int i = this.programMemory.getAt(this)
@@ -59,6 +61,7 @@ public class CPU
 					}
 					case PUSH:
 					{
+						this.expStack.push(this.callStack.pop());
 						break;
 					}
 					case ADD:
@@ -113,42 +116,43 @@ public class CPU
 					{
 						int i = this.ioSystem.read();
 						this.expStack.push(i);
-						
 						break;
 					}
 					case OUT:
 					{
-						this.io.out();
+						int op = this.ioSystem.read();
+						this.expStack.pop();
+						this.ioSystem.write(op);
 						break;
 					}
 					case CALL:
 					{
-						this.io.call(address);
 						break;
 					}
 					case RET:
 					{
-						this.io.ret();
+						int address;
+						address = this.callStack.pop();
+						this.setPC(address);
 						break;
 					}
 					case JP:
 					{
-						this.io.jp(address);
+						int address;
+						this.setPC(address);
 						break;
 					}
 					case JZ:
 					{
-						this.io.jz(address);
 						break;
 					}
 					case DUP:
 					{
-						this.io.dup();
 						break;
 					}
 					case POP:
 					{
-						this.io.pop();
+						this.expStack.pop();
 						break;
 					}
 					default:
@@ -199,13 +203,14 @@ public class CPU
 
 	public void clearStacks() 
 	{
-		// TODO Auto-generated method stub
+		this.expStack.clear();
+		this.callStack.clear();
 		
 	}
 
 	public void setPC(int address) 
 	{
-		// TODO Auto-generated method stub
+		this.PC = address;
 		
 	}
 
