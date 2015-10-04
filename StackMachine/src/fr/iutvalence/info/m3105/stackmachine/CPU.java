@@ -61,55 +61,132 @@ public class CPU
 					}
 					case PUSH:
 					{
-						this.expStack.push(this.callStack.pop());
+						int i;
+						this.expStack.push(this.callStack.pop(i));
 						break;
 					}
 					case ADD:
 					{
+						int res, a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						res = a+b;
+						this.expStack.push(res);
 						break;
 					}
 					case SUB:
 					{
+						int res, a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						res = a-b;
+						this.expStack.push(res);
 						break;
 					}
 					case MUL:
 					{
+						int res, a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						res = a*b;
+						this.expStack.push(res);
 						break;
 					}
 					case DIV:
 					{
+						int res, a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						res = a/b;
+						this.expStack.push(res);
 						break;
 					}
 					case MOD:
 					{
+						int res, a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						res = a%b;
+						this.expStack.push(res);
 						break;
 					}
 					case NEG:
 					{
+						int a;
+						this.expStack.pop(a);
+						this.expStack.push(-a);
 						break;
 					}
 					case LT:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b < a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case LE:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b <= a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case GT:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b > a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case GE:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b >= a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case EQ:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b == a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case NE:
 					{
+						int  a, b;
+						this.expStack.pop(a);
+						this.expStack.pop(b);
+						if (b != a)
+						{
+							this.expStack.push(0);
+						}
+						this.expStack.push(1);
 						break;
 					}
 					case IN:

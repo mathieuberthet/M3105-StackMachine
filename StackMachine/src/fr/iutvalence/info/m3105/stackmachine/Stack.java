@@ -21,7 +21,7 @@ public class Stack {
 		
 	}
 
-	public int pop() throws StackUnderflowException {
+	public int pop(int i) throws StackUnderflowException {
 		return 0;
 	}
 	
