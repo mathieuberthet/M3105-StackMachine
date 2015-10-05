@@ -35,5 +35,9 @@ public class Memory {
 		
 	}
 
+	public int get(int pc) {
+		return pc;
+	}
+
 
 }

@@ -62,14 +62,14 @@ public class CPU
 					case PUSH:
 					{
 						int i;
-						this.expStack.push(this.callStack.pop(i));
+						this.expStack.push(this.callStack.pop());
 						break;
 					}
 					case ADD:
 					{
 						int res, a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						res = a+b;
 						this.expStack.push(res);
 						break;
@@ -77,8 +77,8 @@ public class CPU
 					case SUB:
 					{
 						int res, a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						res = a-b;
 						this.expStack.push(res);
 						break;
@@ -86,8 +86,8 @@ public class CPU
 					case MUL:
 					{
 						int res, a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						res = a*b;
 						this.expStack.push(res);
 						break;
@@ -95,8 +95,8 @@ public class CPU
 					case DIV:
 					{
 						int res, a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						res = a/b;
 						this.expStack.push(res);
 						break;
@@ -104,8 +104,8 @@ public class CPU
 					case MOD:
 					{
 						int res, a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						res = a%b;
 						this.expStack.push(res);
 						break;
@@ -113,15 +113,15 @@ public class CPU
 					case NEG:
 					{
 						int a;
-						this.expStack.pop(a);
+						a = this.expStack.pop();
 						this.expStack.push(-a);
 						break;
 					}
 					case LT:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b < a)
 						{
 							this.expStack.push(0);
@@ -132,8 +132,8 @@ public class CPU
 					case LE:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b <= a)
 						{
 							this.expStack.push(0);
@@ -144,8 +144,8 @@ public class CPU
 					case GT:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b > a)
 						{
 							this.expStack.push(0);
@@ -156,8 +156,8 @@ public class CPU
 					case GE:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b >= a)
 						{
 							this.expStack.push(0);
@@ -168,8 +168,8 @@ public class CPU
 					case EQ:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b == a)
 						{
 							this.expStack.push(0);
@@ -180,8 +180,8 @@ public class CPU
 					case NE:
 					{
 						int  a, b;
-						this.expStack.pop(a);
-						this.expStack.pop(b);
+						a = this.expStack.pop();
+						b = this.expStack.pop();
 						if (b != a)
 						{
 							this.expStack.push(0);
@@ -221,10 +221,20 @@ public class CPU
 					}
 					case JZ:
 					{
+						int address;
+						String s = Integer.toHexString(address);
+						this.expStack.pop();
+						if (address == 0x00)
+						{
+							this.setPC(address);
+						}
 						break;
 					}
 					case DUP:
 					{
+						this.expStack.pop();
+						this.expStack.push(this.callStack.pop());
+						this.expStack.push(this.callStack.pop());
 						break;
 					}
 					case POP:
